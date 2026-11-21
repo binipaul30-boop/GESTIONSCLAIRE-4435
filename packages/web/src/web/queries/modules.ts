@@ -1,0 +1,38 @@
+import { orpc } from "../lib/api";
+import { useCrud } from "./crud";
+import type { AppRouterClient } from "../../api";
+
+type Rows<K extends keyof AppRouterClient> = AppRouterClient[K] extends { list: () => Promise<infer R> } ? R extends (infer X)[] ? X : never : never;
+export type Inscription = Rows<"inscriptions">;
+export type Enseignant = Rows<"enseignants">;
+export type PersonnelAdmin = Rows<"personnelAdmin">;
+export type Bulletin = Rows<"bulletins">;
+export type Cantine = Rows<"cantine">;
+export type Transport = Rows<"transport">;
+export type Salle = Rows<"salles">;
+export type Matiere = Rows<"matieres">;
+export type Seance = Rows<"edt">;
+export type Absence = Rows<"absences">;
+export type Examen = Rows<"examens">;
+export type Livre = Rows<"livres">;
+export type Emprunt = Rows<"emprunts">;
+export type Document = Rows<"documents">;
+export type Relance = Rows<"relances">;
+export type Eleve = Rows<"scolarite">;
+
+export const useInscriptions = () => useCrud<Inscription>(orpc.inscriptions);
+export const useEleves = () => useCrud<Eleve>(orpc.scolarite);
+export const useEnseignants = () => useCrud<Enseignant>(orpc.enseignants);
+export const usePersonnelAdmin = () => useCrud<PersonnelAdmin>(orpc.personnelAdmin);
+export const useBulletins = () => useCrud<Bulletin>(orpc.bulletins);
+export const useCantine = () => useCrud<Cantine>(orpc.cantine);
+export const useTransport = () => useCrud<Transport>(orpc.transport);
+export const useSalles = () => useCrud<Salle>(orpc.salles);
+export const useMatieres = () => useCrud<Matiere>(orpc.matieres);
+export const useSeances = () => useCrud<Seance>(orpc.edt);
+export const useAbsences = () => useCrud<Absence>(orpc.absences);
+export const useExamens = () => useCrud<Examen>(orpc.examens);
+export const useLivres = () => useCrud<Livre>(orpc.livres);
+export const useEmprunts = () => useCrud<Emprunt>(orpc.emprunts);
+export const useDocuments = () => useCrud<Document>(orpc.documents);
+export const useRelances = () => useCrud<Relance>(orpc.relances);

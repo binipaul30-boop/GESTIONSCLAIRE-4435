@@ -1,0 +1,74 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme inline {
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --color-ink: #0e2433;
+  --color-ink-2: #173447;
+  --color-paper: #f5f4ef;
+  --color-line: #e7e4da;
+  --color-primary: #1e6fa8;
+  --color-sky: #6ab2e7;
+  --color-ok: #12924a;
+  --color-warn: #c98a12;
+  --color-bad: #c8372d;
+  --color-muted: #6b7280;
+  --radius-card: 14px;
+}
+
+html,
+body {
+  font-family: var(--font-sans);
+  background: var(--color-paper);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+* {
+  border-color: var(--color-line);
+}
+.num {
+  font-variant-numeric: tabular-nums;
+}
+.label {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  font-weight: 500;
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.rise {
+  animation: rise 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #d6d2c4;
+  border-radius: 6px;
+}
+.field {
+  width: 100%;
+  border: 1px solid var(--color-line);
+  background: #fff;
+  border-radius: 10px;
+  padding: 9px 12px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.field:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgb(30 111 168 / 0.12);
+}
